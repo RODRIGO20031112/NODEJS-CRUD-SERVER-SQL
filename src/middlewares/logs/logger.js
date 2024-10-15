@@ -5,7 +5,7 @@ const logger = (req, res, next) => {
   res.on("finish", () => {
     const duration = Date.now() - start;
     console.log(
-      `Sistemas de monitoramento diz: ${req.method} ${req.originalUrl} - ${res.statusCode} [${duration}ms]`
+      `Sistema de monitoramento diz: ${req.method} ${req.originalUrl} - ${res.statusCode} [${duration}ms]`
     );
   });
 

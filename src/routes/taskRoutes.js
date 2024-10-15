@@ -18,10 +18,22 @@ router.get("/", taskController.getTasks); // GET /tasks
 
 /**
  * @swagger
+ * /tasks/metrics:
+ *   get:
+ *     tags: [Tasks]
+ *     summary: Obtém todas as task metrics.
+ *     responses:
+ *       200:
+ *         description: Lista de task metrics.
+ */
+router.get("/metrics", taskController.getTaskMetrics); // GET /tasks/metrics
+
+/**
+ * @swagger
  * /tasks/{id}:
  *   get:
  *     tags: [Tasks]
- *     summary: Obtém uma task específico.
+ *     summary: Obtém uma task específica.
  *     parameters:
  *       - in: path
  *         name: id
@@ -146,6 +158,6 @@ router.delete("/:id", taskController.deleteTask); // DELETE /tasks/:id
  *       404:
  *         description: Task não encontrado.
  */
-router.patch("/:id/complete", taskController.updateStatusTask); // PUT /tasks/:id
+router.patch("/:id/complete", taskController.updateStatusTask); // PATCH /tasks/:id/complete
 
 export default router;

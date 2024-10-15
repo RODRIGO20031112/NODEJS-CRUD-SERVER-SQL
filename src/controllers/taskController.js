@@ -79,3 +79,12 @@ export const updateStatusTask = async (req, res) => {
     res.status(400).json({ message: "Erro ao atualizar task", error });
   }
 };
+
+export const getTaskMetrics = async (req, res) => {
+  try {
+    const metrics = await taskModel.getAllTaskMetrics();
+    res.json(metrics);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao obter tasks", error });
+  }
+};

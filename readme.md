@@ -1,31 +1,51 @@
-# Crud NodeJS com SQL Lite
+# Crud NodeJS com SQL
 
 ### Instalação
+
+1. Clone op projeto
 
 ```bash
 git clone https://github.com/RODRIGO20031112/NODEJS-CRUD-SERVER-SQL-LITE.git
 ```
 
 ```bash
-cd NODEJS-CRUD-SERVER-SQL-LITE
+cd NODEJS-CRUD-SERVER-SQL
 ```
 
-### Após a clonagem instale as dependências com
+2. Após a clonagem instale as dependências
 
 ```bash
 npm install
 ```
 
-### Inicie o projeto com
+3. Copie o arquivo .env.example para .env e atualize as variáveis ​​de ambiente necessárias:
+
+```bash
+cp .env.example .env
+```
+
+```bash
+SQL_PREFERENCE=MY_SQL  # Opções: SQL_ITE | MY_SQL
+
+# Para MYSQL
+DB_NAME=nodejs-server
+DB_USER=root
+DB_PASSWORD=password
+DB_HOST=localhost
+```
+
+> _Caso opite usar por SQL_LITE não é necessário configurações externas de banco_
+
+4. Inicie o projeto com
 
 ```bash
 npm start
 ```
 
-### E caso precise fazer os testes
+### Caso precise fazer os testes
 
-```
-npm test
+```bash
+npm test # no terminal
 ```
 
 ### Depois de iniciado acesse <a href="http://localhost:3000/api-docs">http://localhost:3000/api-docs</a> para ver a documentação. Caso não se oriente por ela, você pode usar a API normalmente com as instruções abaixo.
@@ -40,6 +60,11 @@ npm test
 ## GET uma task específico:
 
 - **URL:** `http://localhost:3000/tasks/1`
+- **Método:** GET
+
+## GET todas as métricas:
+
+- **URL:** `http://localhost:3000/tasks/metrics`
 - **Método:** GET
 
 ## POST uma nova task:
@@ -65,6 +90,18 @@ npm test
 {
   "task": "Entregar relatório",
   "description": "Relatório entregue as 10:30"
+}
+```
+
+## PATCH para concluir ou retroceder uma task:
+
+- **URL:** `http://localhost:3000/tasks/1/complete`
+- **Método:** PATCH
+- **Corpo da requisição (JSON):**
+
+```json
+{
+  "status": true //para marcar como concluída e false para desmarcar
 }
 ```
 

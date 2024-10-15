@@ -60,3 +60,32 @@ export const updateStatusTask = async (id, data) => {
   }
   return null; // Retorna null se o task não for encontrado
 };
+
+// Obtém todas as tarefas e calcula métricas
+export const getAllTaskMetrics = async () => {
+  const tasks = await Tasks.findAll();
+
+  const totalTasks = tasks.length;
+  const completedTasks = tasks.filter((task) => task.status === true).length;
+  const incompleteTasks = totalTasks - completedTasks;
+
+  // Cálculo das porcentagens
+  const completedPercentage =
+    totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+  const incompletePercentage =
+    totalTasks > 0 ? (incompleteTasks / totalTasks) * 100 : 0;
+
+  // Formata a mensagem de retorno
+  const message = `Você completou ${completedPercentage.toFixed(
+    2
+  )}% das tarefas e ainda precisa concluir os outros ${incompletePercentage.toFixed(
+    2
+  )}%.`;
+
+  return {
+    totalTasks,
+    completedTasks,
+    incompleteTasks,
+    message,
+  };
+};
