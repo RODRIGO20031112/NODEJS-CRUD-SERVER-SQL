@@ -6,6 +6,10 @@
 git clone https://github.com/RODRIGO20031112/NODEJS-CRUD-SERVER-SQL-LITE.git
 ```
 
+```bash
+cd NODEJS-CRUD-SERVER-SQL-LITE
+```
+
 ### Após a clonagem instale as dependências com
 
 ```bash
